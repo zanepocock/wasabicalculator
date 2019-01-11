@@ -13,7 +13,7 @@ Options:
   -h --help      Show this screen.
 """
 
-import os, sys, time, datetime, requests, json
+import os, sys, time, datetime, requests, json, math
 
 # All global variables below are recent - pull from API later
 MIXES_PER_DAY = 15
@@ -65,6 +65,9 @@ past_ten_mixes = [
         return fee_per_utxo
         # json.dumps fee_per_utxo
 """
+def truncate(number, digits) -> float:
+    stepper = pow(10.0, digits)
+    return math.trunc(stepper * number) / stepper
 
 ########################
 ## CALCULATE MIX TIME ##
@@ -85,6 +88,8 @@ def hours_to_complete(days):
     hours = days*24
     return hours
     
+
+
 # Also give the total number of CoinJoin mixes
 def number_of_mixes(wealth, MAX_JOIN_SIZE):
     rounds =  float(wealth)/MAX_JOIN_SIZE
@@ -119,10 +124,18 @@ def main():
     value = value_per_day(MIXES_PER_DAY, MAX_JOIN_SIZE)
     days = days_to_complete(wealth, value)
     hours = hours_to_complete(days)
+    if days < 1:
+        total_time = hours
+        denomination = "hours"
+    else:
+        total_time = days
+        denomination = "days"
     rounds = number_of_mixes(wealth, MAX_JOIN_SIZE)
+    rounds = int(rounds)
     fees = my_total_fee(COORDINATOR_FEES_PER_ROUND, NUMBER_OF_PARTICIPANTS, rounds)
     change = change_to_mix(rounds, MAX_JOIN_SIZE, fees, wealth)
-    print(f"The total amount you can mix in a day is about {value} BTC.\nTo mix {wealth} BTC will take approximately {days} days or {hours} hours.\nThis will cost {fees} BTC in fees over {rounds} rounds.\n{change} BTC will be left, which isn't enough for another round.")
+    print(f"\n\n\n################# COINJOIN ESTIMATOR #################\n\n  Amount to Coinjoin:             {wealth} BTC\n  Time estimate:                  {truncate(total_time, 2)} {denomination}\n  Fees estimate:                  {truncate(fees, 9)} BTC\n\n######################################################\n\n  Max mix per day:                {truncate(value, 3)} BTC\n  Number of CoinJoin rounds:      {rounds} rounds\n  Change/dust:                    {truncate(change, 3)} BTC\n\n######################################################\n\n")
+
 
 if __name__ == '__main__':
     main()

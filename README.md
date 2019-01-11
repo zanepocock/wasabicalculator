@@ -6,9 +6,10 @@ This is a basic python script you can use to calculate a very rough estimate of 
 
 ### TODOS
 - [x] Bare bones logic with hard-coded variables from recent days
-- [ ] Clean up floats
+- [x] Set outputs to x decimal points
+- [x] Make output look better
+- [ ] Tidy up float logic
 - [ ] Take fees with each round as they may affect the total rounds we can make
-- [ ] Set outputs to five decimal points
-- [ ] Make output look better
+- [ ] Validate user input before using it
 - [ ] Hook up CLI commands
 - [ ] Plug into API
