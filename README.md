@@ -12,10 +12,12 @@ $ python wasabicalc.py
 
 *Example output*
 
+```
 DemoEnviron:wasabicalc Demo$ python wasabicalc.py
+
 Enter how much you want to CoinJoin: 4.78495960
 
-```
+
 ################# COINJOIN ESTIMATOR #################
 
   Amount to Coinjoin:             4.7849596 BTC
