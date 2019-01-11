@@ -8,8 +8,8 @@ This is a basic python script you can use to calculate a very rough estimate of 
 - [x] Bare bones logic with hard-coded variables from recent days
 - [x] Set outputs to x decimal points
 - [x] Make output look better
+- [x] Fix negative change bug
+- [x] Validate user input before using it
 - [ ] Tidy up float logic
-- [ ] Take fees with each round as they may affect the total rounds we can make
-- [ ] Validate user input before using it
 - [ ] Hook up CLI commands
 - [ ] Plug into API
