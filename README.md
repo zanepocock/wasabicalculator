@@ -1,8 +1,9 @@
 # Wasabi Wallet Estimator
-*NOTE: This is not usable yet. I should have a basic version running over the weekend*
 
 Wasabi Wallet's CoinJoin is fantastic, but it can take a while with large hodlings.
-This is a basic python script you can use to calculate a very rough estimate of the time and fees required to CoinJoin an arbitrary amount of BTC.
+This is a basic python script to estimate the time and fees required to CoinJoin your BTC.
+
+**Deprecated - see backend update**
 
 ## Usage
 ```
@@ -13,8 +14,7 @@ $ python wasabicalc.py
 *Example output*
 
 ```
-DemoEnviron:wasabicalc Demo$ python wasabicalc.py
-
+$ python wasabicalc.py
 Enter how much you want to CoinJoin: 4.78495960
 
 
@@ -34,11 +34,10 @@ Enter how much you want to CoinJoin: 4.78495960
 ```
 
 ### TODOS
-- [x] Bare bones logic with hard-coded variables from recent days
-- [x] Set outputs to x decimal points
-- [x] Make output look better
+- [x] Basic logic with hard-coded recent data
+- [x] Validate user input
 - [x] Fix negative change bug
-- [x] Validate user input before using it
+- [x] Format output
 - [ ] Tidy up main() function
 - [ ] Tidy up float logic
 - [ ] Hook up CLI commands
